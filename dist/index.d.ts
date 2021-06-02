@@ -1,10 +1,20 @@
 import * as React from 'react';
-export declare function usePortray<T>(Component: Portray.FC<T>): React.FC<T>;
+interface PortrayContextProps {
+    mainLang?: string;
+    langs?: string[];
+}
+interface PortrayContext {
+    setLang: (langCode: string) => void;
+    strings: PortrayDict;
+    langCode: string;
+    mainLang: string;
+    langs: string[];
+}
+export declare function withPortray<T>(Component: React.FC<T>, strings: PortrayDict, settings?: PortrayContextProps): React.FC<T>;
+export declare function withStrings<T>(Component: Portray.FC<T>): React.FC<T>;
 export declare namespace Portray {
-    type Props<P> = P & {
-        p: {
-            [id: string]: string;
-        };
+    type Props<P> = P & PortrayContext & {
+        $: (key: TemplateStringsArray) => string;
     };
     export type FC<P = {}> = FunctionComponent<P>;
     interface FunctionComponent<P = {}> {

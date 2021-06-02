@@ -16,3 +16,9 @@ declare module '*.svg' {
   export default svgUrl
   export { svgComponent as ReactComponent }
 }
+
+interface PortrayDict {
+  [id: string]: {
+    [langCode: string]: string
+  }
+}
