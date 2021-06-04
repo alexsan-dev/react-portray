@@ -1,6 +1,11 @@
 // REACT
 import * as React from 'react'
 
+// CALLSITE
+import caller from 'callsite'
+import path from 'path'
+import fs from 'fs'
+
 export const portrayAppCtx = (stringsDict: PortrayDict) => {
   // RUTA DE STRINGS
   const srcPath = caller().map((value: caller.CallSite) => {
