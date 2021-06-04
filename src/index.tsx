@@ -1,9 +1,5 @@
 // REACT
 import * as React from 'react'
-import preval from 'preval.macro'
-import caller from 'callsite'
-import fs from 'fs'
-import path from 'path'
 
 export const portrayAppCtx = (stringsDict: PortrayDict) => {
   // RUTA DE STRINGS
@@ -76,9 +72,6 @@ export function withPortray<T>(
 ) {
   // COMPONENTE
   const PortrayWrappedComponent: React.FC<T> = (props: T) => {
-    // GENERAR STRINGS
-    preval`module.exports = portrayAppCtx(strings)`
-
     // ESTADO
     const mainLang: string = settings?.mainLang || 'en'
     const [langCode, setLang] = React.useState<string>(mainLang)
